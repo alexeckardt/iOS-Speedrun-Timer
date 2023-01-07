@@ -11,16 +11,21 @@ struct RunPageView: View {
     
     @Environment(\.presentationMode) var mode;
     
-    @State private var timerRunning = false;
-    @State private var displayTime = 0;
+    //Detect App Close
+    @Environment(\.scenePhase) var scenePhase
+    @State private var isActive = true
+    @State private var dateAppClosed : Date = Date();
     
-    @State private var timeLastUpdated : Date = Date();
-    
-    @State private var storedTimerTime : TimeInterval = 0.0;
-    
+
     //Timer
+    @State private var timerRunning = false;
+    @State private var timeLastUpdated : Date = Date();
+    @State private var storedTimerTime : TimeInterval = 0.0;
     @State private var timeStep = 0.01
     let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
+    
+    //Splits
+    @State private var splitsHit = 0;
     
     //Size
     private var buttonSize : CGFloat = 20;
@@ -46,6 +51,46 @@ struct RunPageView: View {
                 
                 //push to top
                 Spacer()
+            }
+        }
+        //Update Timer
+        .onReceive(timer) { _ in
+            //Early Exit
+            guard isActive else { return }
+            
+            //Update
+            if (timerRunning) {
+                storedTimerTime += timeStep
+            }
+        }
+        
+        //Update If App Closes
+        .onChange(of: scenePhase) { newPhase in
+            
+            //App Opens
+            if newPhase == .active {
+                
+                if (!isActive) {
+                    isActive = true
+                    
+                    print("App Opened!")
+                    
+                    //Add Any Missing Time
+                    if (timerRunning) {
+                        storedTimerTime += Date().timeIntervalSince(dateAppClosed)
+                    }
+                }
+                
+            } else {
+                
+                if (isActive) {
+                    print("App Closed!")
+                    
+                    //App Closes
+                    isActive = false
+                    dateAppClosed = Date()
+                }
+                
             }
         }
     }
@@ -98,11 +143,6 @@ extension RunPageView {
             
             //Get the Time Elapsed
             TimeView(timeElapsed: storedTimerTime)
-                .onReceive(timer) { _ in
-                    if (timerRunning) {
-                        storedTimerTime += timeStep
-                    }
-                }
          
             ScrollView {
                 splitInfo
@@ -120,7 +160,7 @@ extension RunPageView {
         
         LazyVStack {
             //Go Over the Tabs
-            ForEach(0 ... 50, id: \.self) { i in
+            ForEach(0 ... splitsHit, id: \.self) { i in
                 
                 //Show the Milestone
                 TimerSplitView()
@@ -150,30 +190,38 @@ extension RunPageView {
             //
             //THIS IS THE BIG BLUE BUTTON
             //
-            Button() {
-                
-                //Cause Split
-                if (timerRunning) {
-                    
-                    //Cause Split
-                    
-                //Start Timer
-                } else {
-                    
-                    //Start Timer
-                    timerRunning = true;
-                
-                }
-                
-            } label: {
-                splitButton
-            }
+            splitButton
             
         }
         
     }
     
+    
     var splitButton : some View {
+        
+        Button() {
+            
+            //Cause Split
+            if (timerRunning) {
+                
+                //Cause Split
+                splitsHit += 1;
+                
+            //Start Timer
+            } else {
+                
+                //Start Timer
+                timerRunning = true;
+            
+            }
+            
+        } label: {
+            splitButtonLabel
+        }
+        
+    }
+    
+    var splitButtonLabel : some View {
         
         VStack {
             
@@ -224,11 +272,14 @@ extension RunPageView {
             Button {
                 
                 //nothing
+                if (splitsHit > 0) {
+                    splitsHit -= 1
+                }
                 
             } label: {
                 RunSmallButtonLabelView(buttonSize: buttonSize,
                                         buttonLabelImage: "arrow.uturn.backward",
-                                        backgroundCol: timerRunning ? b : g)
+                                        backgroundCol: (splitsHit > 0) ? b : g)
             }
             
             //
@@ -245,6 +296,9 @@ extension RunPageView {
                 
                 //Reset Stored Time
                 storedTimerTime = 0.0;
+                
+                //Reset Hit Counter
+                splitsHit = 0;
                 
             } label: {
                 RunSmallButtonLabelView(buttonSize: buttonSize,
