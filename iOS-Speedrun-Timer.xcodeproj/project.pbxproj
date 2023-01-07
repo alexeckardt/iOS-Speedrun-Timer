@@ -15,6 +15,8 @@
 		0870C7702968F4F800E95533 /* GameTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C76F2968F4F800E95533 /* GameTabView.swift */; };
 		0870C7722968F95900E95533 /* CategoryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C7712968F95900E95533 /* CategoryTabView.swift */; };
 		0870C7742968F9EB00E95533 /* CategoryPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C7732968F9EB00E95533 /* CategoryPageView.swift */; };
+		0870C7772968FB0B00E95533 /* MilestoneTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C7762968FB0B00E95533 /* MilestoneTabView.swift */; };
+		0870C7792968FC6D00E95533 /* RightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C7782968FC6D00E95533 /* RightArrow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		0870C76F2968F4F800E95533 /* GameTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTabView.swift; sourceTree = "<group>"; };
 		0870C7712968F95900E95533 /* CategoryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabView.swift; sourceTree = "<group>"; };
 		0870C7732968F9EB00E95533 /* CategoryPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPageView.swift; sourceTree = "<group>"; };
+		0870C7762968FB0B00E95533 /* MilestoneTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneTabView.swift; sourceTree = "<group>"; };
+		0870C7782968FC6D00E95533 /* RightArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightArrow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,8 @@
 			children = (
 				0870C76F2968F4F800E95533 /* GameTabView.swift */,
 				0870C7712968F95900E95533 /* CategoryTabView.swift */,
+				0870C7762968FB0B00E95533 /* MilestoneTabView.swift */,
+				0870C7782968FC6D00E95533 /* RightArrow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -171,6 +177,8 @@
 				0870C7742968F9EB00E95533 /* CategoryPageView.swift in Sources */,
 				0870C6D229678FA000E95533 /* iOS_Speedrun_TimerApp.swift in Sources */,
 				0870C7722968F95900E95533 /* CategoryTabView.swift in Sources */,
+				0870C7792968FC6D00E95533 /* RightArrow.swift in Sources */,
+				0870C7772968FB0B00E95533 /* MilestoneTabView.swift in Sources */,
 				0870C76D2968F4D900E95533 /* GamePageView.swift in Sources */,
 				0870C7702968F4F800E95533 /* GameTabView.swift in Sources */,
 			);

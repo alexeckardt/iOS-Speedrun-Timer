@@ -35,9 +35,8 @@ struct CategoryTabView: View {
                 //Spacer
                 Spacer()
                 
-                //Continue
-                Image(systemName: "chevron.right")
-                    .padding(.trailing)
+                //Continue Icon
+                RightArrow()
 
             }
             .padding()
