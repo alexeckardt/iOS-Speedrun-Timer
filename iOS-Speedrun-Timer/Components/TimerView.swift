@@ -22,16 +22,12 @@ struct TimerView: View {
 extension TimerView {
     var time : some View {
         
-        HStack(alignment: .bottom, spacing: 0) {
-
+        HStack {
+            
             Spacer()
             
-            Text("0:00:00.0")
-                .font(.largeTitle).multilineTextAlignment(.leading).bold()
+            TimeView()
             
-            Text("00")
-                .font(.subheadline)
-                .offset(y: -4)
         }
         
     }
