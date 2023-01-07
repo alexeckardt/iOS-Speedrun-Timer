@@ -10,25 +10,44 @@ import SwiftUI
 struct TimeView: View {
     
     let timeElapsed : TimeInterval;
+    let percision : Int = 2;
     
     var body: some View {
         
+        //Split Evenly
         HStack(alignment: .bottom, spacing: 0) {
-
-            let timeStrings : [String] = TimeIntervalToTimerString(secondsElapsed: timeElapsed)
             
-            Text(timeStrings[0])
-                .font(.largeTitle).multilineTextAlignment(.leading).bold()
+            let timeStrings : [String] = TimeIntervalToTimerStringPercision(secondsElapsed: timeElapsed, percision: percision)
             
-            Text(timeStrings[1])
+            //H Size Of Beggining
+            VStack(alignment: .trailing) {
+                Text(timeStrings[0])
+                    .font(.largeTitle).multilineTextAlignment(.trailing).bold()
+            }
+            
+            //V Size of Side
+            VStack(alignment: .leading) {
+                ZStack {
+                    
+                    //invisible buffer
+                    let bufferStr = String(repeating: "0", count: percision)
+                    Text(bufferStr)
+                        .foregroundColor(.clear)
+                    
+                    //Actual Visible Time
+                    Text(timeStrings[1])
+                }
                 .font(.subheadline)
-                .offset(y: -5)
+                .multilineTextAlignment(.leading)
+                .offset(y: -4)
+            }
+
         }
     }
 }
 
 struct TimeView_Previews: PreviewProvider {
     static var previews: some View {
-        TimeView(timeElapsed: 3601.4)
+        TimeView(timeElapsed: 134423243.223)
     }
 }

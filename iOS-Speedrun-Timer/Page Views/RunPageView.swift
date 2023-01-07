@@ -14,9 +14,13 @@ struct RunPageView: View {
     @State private var timerRunning = false;
     @State private var displayTime = 0;
     
-    @State private var startTimerTime : Date = Date();
-    @State private var setTime : Bool = false;
+    @State private var timeLastUpdated : Date = Date();
+    
     @State private var storedTimerTime : TimeInterval = 0.0;
+    
+    //Timer
+    @State private var timeStep = 0.01
+    let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
     
     //Size
     private var buttonSize : CGFloat = 20;
@@ -92,12 +96,13 @@ extension RunPageView {
         
         VStack {
             
-            //Decide Time To Display
-            let tElapsed : TimeInterval = (timerRunning)    ? storedTimerTime + startTimerTime.distance(to: Date())
-                                                            : storedTimerTime;
-            
             //Get the Time Elapsed
-            TimeView(timeElapsed: tElapsed)
+            TimeView(timeElapsed: storedTimerTime)
+                .onReceive(timer) { _ in
+                    if (timerRunning) {
+                        storedTimerTime += timeStep
+                    }
+                }
          
             ScrollView {
                 splitInfo
@@ -157,12 +162,7 @@ extension RunPageView {
                     
                     //Start Timer
                     timerRunning = true;
-                    
-                    //Set Current Time
-                    if (!setTime) {
-                        startTimerTime = Date()
-                        setTime = true;
-                    }
+                
                 }
                 
             } label: {
@@ -207,10 +207,6 @@ extension RunPageView {
                     
                     //Stop The Time
                     timerRunning = false;
-                    setTime = false;
-                    
-                    //Add Time To Stored Time
-                    storedTimerTime += startTimerTime.distance(to: Date())
                     
                 }
                 

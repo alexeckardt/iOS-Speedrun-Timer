@@ -48,13 +48,17 @@ func TimeIntervalToTimerStringPercision(secondsElapsed: TimeInterval, percision:
     }
          
     //Should Be Below 60 now; Show Seconds
-    clockString += String(format: "%02d", Int(_secondsElapsed)) + "."
+    if (secondsElapsed >= 10) {
+        clockString += String(format: "%02d", Int(_secondsElapsed)) + "."
+    } else {
+        clockString += String(Int(_secondsElapsed)) + "."
+    }
     
     //
     //
     //Round The Time Under A Seconds
     let frac : Double = secondsElapsed.truncatingRemainder(dividingBy: 1);
-    let multiplier = pow(10, Double(percision+1))
+    let multiplier = pow(10, Double(percision))
     
     let subSeconds : Int = Int(frac * multiplier)
       
@@ -62,7 +66,8 @@ func TimeIntervalToTimerStringPercision(secondsElapsed: TimeInterval, percision:
     //
     //
     
-    return [clockString, String(format: "%04d", subSeconds)]
+    let formatString = "%0" + String(percision) + "d"
+    return [clockString, String(format: formatString, subSeconds)]
     
 }
 
@@ -71,5 +76,5 @@ func TimeIntervalToTimerStringPercision(secondsElapsed: TimeInterval, percision:
 //
 
 func TimeIntervalToTimerString(secondsElapsed: TimeInterval) -> [String] {
-    return TimeIntervalToTimerStringPercision(secondsElapsed: secondsElapsed, percision: 3)
+    return TimeIntervalToTimerStringPercision(secondsElapsed: secondsElapsed, percision: 2)
 }
