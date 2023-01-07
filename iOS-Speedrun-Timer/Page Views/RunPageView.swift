@@ -55,43 +55,16 @@ struct RunPageView: View {
         }
         //Update Timer
         .onReceive(timer) { _ in
-            //Early Exit
-            guard isActive else { return }
             
-            //Update
-            if (timerRunning) {
-                storedTimerTime += timeStep
-            }
+            TimerUpdate()
+            
         }
         
         //Update If App Closes
         .onChange(of: scenePhase) { newPhase in
             
-            //App Opens
-            if newPhase == .active {
-                
-                if (!isActive) {
-                    isActive = true
-                    
-                    print("App Opened!")
-                    
-                    //Add Any Missing Time
-                    if (timerRunning) {
-                        storedTimerTime += Date().timeIntervalSince(dateAppClosed)
-                    }
-                }
-                
-            } else {
-                
-                if (isActive) {
-                    print("App Closed!")
-                    
-                    //App Closes
-                    isActive = false
-                    dateAppClosed = Date()
-                }
-                
-            }
+            TimerUpdateOnSceneUpdate(newPhase: newPhase)
+            
         }
     }
 }
@@ -204,14 +177,12 @@ extension RunPageView {
             //Cause Split
             if (timerRunning) {
                 
-                //Cause Split
-                splitsHit += 1;
+                SplitCreate()
                 
             //Start Timer
             } else {
                 
-                //Start Timer
-                timerRunning = true;
+                TimerStart()
             
             }
             
@@ -253,8 +224,7 @@ extension RunPageView {
                 
                 if (timerRunning) {
                     
-                    //Stop The Time
-                    timerRunning = false;
+                    TimerPause()
                     
                 }
                 
@@ -271,10 +241,7 @@ extension RunPageView {
             //Undo Split
             Button {
                 
-                //nothing
-                if (splitsHit > 0) {
-                    splitsHit -= 1
-                }
+                SplitUndo();
                 
             } label: {
                 RunSmallButtonLabelView(buttonSize: buttonSize,
@@ -291,14 +258,7 @@ extension RunPageView {
             //Reset
             Button {
                 
-                //Stop The Time
-                timerRunning = false;
-                
-                //Reset Stored Time
-                storedTimerTime = 0.0;
-                
-                //Reset Hit Counter
-                splitsHit = 0;
+                TimerReset();
                 
             } label: {
                 RunSmallButtonLabelView(buttonSize: buttonSize,
@@ -318,4 +278,101 @@ struct RunPageView_Previews: PreviewProvider {
     static var previews: some View {
         RunPageView()
     }
+}
+
+//
+//
+//
+//      HELPER FUNCTIONS
+//
+//
+//
+
+extension RunPageView {
+    
+    func TimerStart() {
+        timerRunning = true;
+    }
+    
+    func TimerPause() {
+        timerRunning = false;
+    }
+    
+    func TimerReset() {
+        //Stop The Time
+        timerRunning = false;
+        
+        //Reset Stored Time
+        storedTimerTime = 0.0;
+        
+        //Reset Hit Counter
+        splitsHit = 0;
+    }
+    
+    func TimerUpdate() {
+        //Early Exit
+        guard isActive else { return }
+        
+        //Update
+        if (timerRunning) {
+            storedTimerTime += timeStep
+        }
+    }
+    
+    func TimerUpdateOnSceneUpdate(newPhase: ScenePhase) {
+        //App Opens
+        if newPhase == .active {
+            
+            //Make Sure App Not Active
+            if (!isActive) {
+                
+                //Toggle
+                isActive = true
+                
+                //Print
+                print("App Opened!")
+                
+                //Add Any Missing Time
+                if (timerRunning) {
+                    storedTimerTime += Date().timeIntervalSince(dateAppClosed)
+                }
+            }
+            
+        } else {
+            
+            //Make Sure Active
+            if (isActive) {
+                
+                //Print
+                print("App Closed!")
+                
+                //App Closes
+                isActive = false
+                dateAppClosed = Date()
+            }
+            
+        }
+    }
+    
+    func SplitCreate() {
+        
+        //Cause Split
+        splitsHit += 1;
+        
+    }
+    
+    func SplitUndo() {
+        
+        if (splitsHit > 0) {
+            splitsHit -= 1;
+        }
+        
+    }
+    
+    func SplitsReset() {
+        
+        splitsHit = 0;
+        
+    }
+    
 }
