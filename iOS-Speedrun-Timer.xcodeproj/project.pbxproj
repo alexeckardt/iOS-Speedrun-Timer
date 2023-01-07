@@ -20,6 +20,9 @@
 		0870C77B2968FCC300E95533 /* MilestonePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C77A2968FCC300E95533 /* MilestonePageView.swift */; };
 		0870C77D2968FD6200E95533 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C77C2968FD6200E95533 /* TimerView.swift */; };
 		0870C77F2968FF9A00E95533 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C77E2968FF9A00E95533 /* TimeView.swift */; };
+		0870C781296903DF00E95533 /* RunPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C780296903DF00E95533 /* RunPageView.swift */; };
+		0870C7832969089C00E95533 /* TimerSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C7822969089C00E95533 /* TimerSplitView.swift */; };
+		0870C7872969107B00E95533 /* RunSmallButtonLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C7862969107B00E95533 /* RunSmallButtonLabelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		0870C77A2968FCC300E95533 /* MilestonePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestonePageView.swift; sourceTree = "<group>"; };
 		0870C77C2968FD6200E95533 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		0870C77E2968FF9A00E95533 /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
+		0870C780296903DF00E95533 /* RunPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunPageView.swift; sourceTree = "<group>"; };
+		0870C7822969089C00E95533 /* TimerSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSplitView.swift; sourceTree = "<group>"; };
+		0870C7862969107B00E95533 /* RunSmallButtonLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSmallButtonLabelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,7 @@
 				0870C76C2968F4D900E95533 /* GamePageView.swift */,
 				0870C7732968F9EB00E95533 /* CategoryPageView.swift */,
 				0870C77A2968FCC300E95533 /* MilestonePageView.swift */,
+				0870C780296903DF00E95533 /* RunPageView.swift */,
 			);
 			path = "Page Views";
 			sourceTree = "<group>";
@@ -107,7 +114,9 @@
 				0870C7762968FB0B00E95533 /* MilestoneTabView.swift */,
 				0870C7782968FC6D00E95533 /* RightArrow.swift */,
 				0870C77C2968FD6200E95533 /* TimerView.swift */,
+				0870C7862969107B00E95533 /* RunSmallButtonLabelView.swift */,
 				0870C77E2968FF9A00E95533 /* TimeView.swift */,
+				0870C7822969089C00E95533 /* TimerSplitView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -187,8 +196,11 @@
 				0870C6D429678FA000E95533 /* ContentView.swift in Sources */,
 				0870C7742968F9EB00E95533 /* CategoryPageView.swift in Sources */,
 				0870C77F2968FF9A00E95533 /* TimeView.swift in Sources */,
+				0870C7872969107B00E95533 /* RunSmallButtonLabelView.swift in Sources */,
 				0870C6D229678FA000E95533 /* iOS_Speedrun_TimerApp.swift in Sources */,
+				0870C7832969089C00E95533 /* TimerSplitView.swift in Sources */,
 				0870C7722968F95900E95533 /* CategoryTabView.swift in Sources */,
+				0870C781296903DF00E95533 /* RunPageView.swift in Sources */,
 				0870C7792968FC6D00E95533 /* RightArrow.swift in Sources */,
 				0870C7772968FB0B00E95533 /* MilestoneTabView.swift in Sources */,
 				0870C76D2968F4D900E95533 /* GamePageView.swift in Sources */,
