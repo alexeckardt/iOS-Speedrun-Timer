@@ -18,7 +18,7 @@ struct CategoryPageView: View {
                     
                     //Show the Category Tabs
                     NavigationLink {
-                        CategoryPageView()
+                        MilestonePageView()
                     } label: {
                         CategoryTabView(categoryIcon: "timer", categoryName: "Category")
                     }

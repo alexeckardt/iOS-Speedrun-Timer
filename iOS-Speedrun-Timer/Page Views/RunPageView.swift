@@ -15,6 +15,8 @@ struct RunPageView: View {
     @State private var displayTime = 0;
     
     @State private var startTimerTime : Date = Date();
+    @State private var setTime : Bool = false;
+    @State private var storedTimerTime : TimeInterval = 0.0;
     
     //Size
     private var buttonSize : CGFloat = 20;
@@ -90,10 +92,12 @@ extension RunPageView {
         
         VStack {
             
-            //Get the Time Elapsed
-            let timeElapsed : TimeInterval = Date().distance(to: startTimerTime)
+            //Decide Time To Display
+            let tElapsed : TimeInterval = (timerRunning)    ? storedTimerTime + startTimerTime.distance(to: Date())
+                                                            : storedTimerTime;
             
-            TimeView(timeElapsed: timeElapsed)
+            //Get the Time Elapsed
+            TimeView(timeElapsed: tElapsed)
          
             ScrollView {
                 splitInfo
@@ -138,13 +142,15 @@ extension RunPageView {
             
             Divider()
             
+            //
+            //THIS IS THE BIG BLUE BUTTON
+            //
             Button() {
                 
                 //Cause Split
                 if (timerRunning) {
                     
-                    //Set
-                    timerRunning = true;
+                    //Cause Split
                     
                 //Start Timer
                 } else {
@@ -152,9 +158,11 @@ extension RunPageView {
                     //Start Timer
                     timerRunning = true;
                     
-                    //Get Current Time
-                    startTimerTime = Date()
-                    
+                    //Set Current Time
+                    if (!setTime) {
+                        startTimerTime = Date()
+                        setTime = true;
+                    }
                 }
                 
             } label: {
@@ -195,8 +203,16 @@ extension RunPageView {
             //Pause
             Button {
                 
-                //Stop The Time
-                timerRunning = false;
+                if (timerRunning) {
+                    
+                    //Stop The Time
+                    timerRunning = false;
+                    setTime = false;
+                    
+                    //Add Time To Stored Time
+                    storedTimerTime += startTimerTime.distance(to: Date())
+                    
+                }
                 
             } label: {
                 RunSmallButtonLabelView(buttonSize: buttonSize,
@@ -208,11 +224,10 @@ extension RunPageView {
             //
             //
             
-            //Undo
+            //Undo Split
             Button {
                 
-                //Stop The Time
-                timerRunning = false;
+                //nothing
                 
             } label: {
                 RunSmallButtonLabelView(buttonSize: buttonSize,
@@ -231,6 +246,9 @@ extension RunPageView {
                 
                 //Stop The Time
                 timerRunning = false;
+                
+                //Reset Stored Time
+                storedTimerTime = 0.0;
                 
             } label: {
                 RunSmallButtonLabelView(buttonSize: buttonSize,

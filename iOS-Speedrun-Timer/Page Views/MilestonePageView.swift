@@ -33,7 +33,10 @@ struct MilestonePageView: View {
                 
                 //New Run Button
                 NavigationLink {
-                    //
+                    
+                    //Go To New Run Page
+                    RunPageView()
+                    
                 } label: {
                     Image(systemName: "hourglass.tophalf.filled")
                         .resizable()
@@ -80,7 +83,9 @@ extension MilestonePageView {
     var prevRunHistoryButton : some View {
         
         NavigationLink {
+            
             //
+            
         } label: {
             Text("Previous Run History")
                 .font(.caption)
