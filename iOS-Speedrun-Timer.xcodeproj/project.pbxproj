@@ -11,6 +11,8 @@
 		0870C6D429678FA000E95533 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C6D329678FA000E95533 /* ContentView.swift */; };
 		0870C6D629678FA100E95533 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0870C6D529678FA100E95533 /* Assets.xcassets */; };
 		0870C6DA29678FA100E95533 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0870C6D929678FA100E95533 /* Preview Assets.xcassets */; };
+		0870C76D2968F4D900E95533 /* GamePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C76C2968F4D900E95533 /* GamePageView.swift */; };
+		0870C7702968F4F800E95533 /* GameTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C76F2968F4F800E95533 /* GameTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		0870C6D529678FA100E95533 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0870C6D729678FA100E95533 /* iOS_Speedrun_Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS_Speedrun_Timer.entitlements; sourceTree = "<group>"; };
 		0870C6D929678FA100E95533 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0870C76C2968F4D900E95533 /* GamePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageView.swift; sourceTree = "<group>"; };
+		0870C76F2968F4F800E95533 /* GameTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,8 @@
 		0870C6D029678FA000E95533 /* iOS-Speedrun-Timer */ = {
 			isa = PBXGroup;
 			children = (
+				0870C76E2968F4EA00E95533 /* Components */,
+				0870C76B2968F4BF00E95533 /* Page Views */,
 				0870C6D129678FA000E95533 /* iOS_Speedrun_TimerApp.swift */,
 				0870C6D329678FA000E95533 /* ContentView.swift */,
 				0870C6D529678FA100E95533 /* Assets.xcassets */,
@@ -67,6 +73,22 @@
 				0870C6D929678FA100E95533 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0870C76B2968F4BF00E95533 /* Page Views */ = {
+			isa = PBXGroup;
+			children = (
+				0870C76C2968F4D900E95533 /* GamePageView.swift */,
+			);
+			path = "Page Views";
+			sourceTree = "<group>";
+		};
+		0870C76E2968F4EA00E95533 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0870C76F2968F4F800E95533 /* GameTabView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +163,8 @@
 			files = (
 				0870C6D429678FA000E95533 /* ContentView.swift in Sources */,
 				0870C6D229678FA000E95533 /* iOS_Speedrun_TimerApp.swift in Sources */,
+				0870C76D2968F4D900E95533 /* GamePageView.swift in Sources */,
+				0870C7702968F4F800E95533 /* GameTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
