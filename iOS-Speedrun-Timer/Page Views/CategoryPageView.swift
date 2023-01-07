@@ -1,13 +1,13 @@
 //
-//  GamePageView.swift
+//  CategoryPageView.swift
 //  iOS-Speedrun-Timer
 //
-//  Created by Alex Eckardt on 2023-01-06.
+//  Created by Anita Eckardt on 2023-01-06.
 //
 
 import SwiftUI
 
-struct GamePageView: View {
+struct CategoryPageView: View {
     var body: some View {
         
         ScrollView {
@@ -16,29 +16,28 @@ struct GamePageView: View {
                 
                 ForEach(0 ... 20, id: \.self) { i in
                     
-                    //Show the Game Tabs
+                    //Show the Category Tabs
                     NavigationLink {
                         CategoryPageView()
                     } label: {
-                        GameTabView(gameIcon: "gamecontroller", gameName: "Game", numCategories: 0)
+                        CategoryTabView(categoryIcon: "timer", categoryName: "Category")
                     }
                     
                 }
                 
             }
-            
         }
         //Navigation Header
-        .navigationTitle("Games")
+        .navigationTitle("Categories")
         .navigationBarTitleDisplayMode(.inline)
         
     }
 }
 
-struct GamePageView_Previews: PreviewProvider {
+struct CategoryPageView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            GamePageView()
+        NavigationView{
+            CategoryPageView()
         }
     }
 }
