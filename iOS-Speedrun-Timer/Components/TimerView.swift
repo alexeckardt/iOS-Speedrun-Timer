@@ -26,7 +26,7 @@ extension TimerView {
             
             Spacer()
             
-            TimeView()
+            TimeView(timeElapsed: Date().distance(to: Date()))
             
         }
         

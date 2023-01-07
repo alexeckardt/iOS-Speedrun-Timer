@@ -23,6 +23,8 @@
 		0870C781296903DF00E95533 /* RunPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C780296903DF00E95533 /* RunPageView.swift */; };
 		0870C7832969089C00E95533 /* TimerSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C7822969089C00E95533 /* TimerSplitView.swift */; };
 		0870C7872969107B00E95533 /* RunSmallButtonLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C7862969107B00E95533 /* RunSmallButtonLabelView.swift */; };
+		0870C78B2969150C00E95533 /* DisplayFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C78A2969150C00E95533 /* DisplayFunctions.swift */; };
+		0870C78D2969152C00E95533 /* TimerFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C78C2969152C00E95533 /* TimerFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		0870C780296903DF00E95533 /* RunPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunPageView.swift; sourceTree = "<group>"; };
 		0870C7822969089C00E95533 /* TimerSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSplitView.swift; sourceTree = "<group>"; };
 		0870C7862969107B00E95533 /* RunSmallButtonLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSmallButtonLabelView.swift; sourceTree = "<group>"; };
+		0870C78A2969150C00E95533 /* DisplayFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayFunctions.swift; sourceTree = "<group>"; };
+		0870C78C2969152C00E95533 /* TimerFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 		0870C6D029678FA000E95533 /* iOS-Speedrun-Timer */ = {
 			isa = PBXGroup;
 			children = (
+				0870C789296914F200E95533 /* Functionality */,
 				0870C76E2968F4EA00E95533 /* Components */,
 				0870C76B2968F4BF00E95533 /* Page Views */,
 				0870C6D129678FA000E95533 /* iOS_Speedrun_TimerApp.swift */,
@@ -119,6 +124,15 @@
 				0870C7822969089C00E95533 /* TimerSplitView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		0870C789296914F200E95533 /* Functionality */ = {
+			isa = PBXGroup;
+			children = (
+				0870C78A2969150C00E95533 /* DisplayFunctions.swift */,
+				0870C78C2969152C00E95533 /* TimerFunctions.swift */,
+			);
+			path = Functionality;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +214,8 @@
 				0870C6D229678FA000E95533 /* iOS_Speedrun_TimerApp.swift in Sources */,
 				0870C7832969089C00E95533 /* TimerSplitView.swift in Sources */,
 				0870C7722968F95900E95533 /* CategoryTabView.swift in Sources */,
+				0870C78D2969152C00E95533 /* TimerFunctions.swift in Sources */,
+				0870C78B2969150C00E95533 /* DisplayFunctions.swift in Sources */,
 				0870C781296903DF00E95533 /* RunPageView.swift in Sources */,
 				0870C7792968FC6D00E95533 /* RightArrow.swift in Sources */,
 				0870C7772968FB0B00E95533 /* MilestoneTabView.swift in Sources */,

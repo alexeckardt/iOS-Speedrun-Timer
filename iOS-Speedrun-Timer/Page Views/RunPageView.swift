@@ -12,6 +12,9 @@ struct RunPageView: View {
     @Environment(\.presentationMode) var mode;
     
     @State private var timerRunning = false;
+    @State private var displayTime = 0;
+    
+    @State private var startTimerTime : Date = Date();
     
     //Size
     private var buttonSize : CGFloat = 20;
@@ -19,8 +22,6 @@ struct RunPageView: View {
     //Define Common Button Colours
     let g = Color(.systemGray)
     let b = Color(.systemBlue)
-    
-    
     
     var body: some View {
         ZStack {
@@ -89,7 +90,10 @@ extension RunPageView {
         
         VStack {
             
-            TimeView()
+            //Get the Time Elapsed
+            let timeElapsed : TimeInterval = Date().distance(to: startTimerTime)
+            
+            TimeView(timeElapsed: timeElapsed)
          
             ScrollView {
                 splitInfo
@@ -141,14 +145,16 @@ extension RunPageView {
                     
                     //Set
                     timerRunning = true;
-                
-                    
                     
                 //Start Timer
                 } else {
                     
                     //Start Timer
                     timerRunning = true;
+                    
+                    //Get Current Time
+                    startTimerTime = Date()
+                    
                 }
                 
             } label: {
@@ -158,7 +164,7 @@ extension RunPageView {
         }
         
     }
-
+    
     var splitButton : some View {
         
         VStack {
@@ -242,6 +248,6 @@ extension RunPageView {
 
 struct RunPageView_Previews: PreviewProvider {
     static var previews: some View {
-            RunPageView()
+        RunPageView()
     }
 }

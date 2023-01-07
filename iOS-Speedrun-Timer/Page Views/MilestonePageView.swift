@@ -60,7 +60,7 @@ struct MilestonePageView: View {
                     .foregroundColor(Color(.systemGray))
                     .padding(.top)
                 
-                TimeView()
+                TimeView(timeElapsed: Date().distance(to: Date()))
             
                 
             }

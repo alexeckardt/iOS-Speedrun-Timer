@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct TimeView: View {
+    
+    let timeElapsed : TimeInterval;
+    
     var body: some View {
         
         HStack(alignment: .bottom, spacing: 0) {
 
-            Text("0:00:00.0")
+            let timeStrings : [String] = TimeIntervalToTimerString(secondsElapsed: timeElapsed)
+            
+            Text(timeStrings[0])
                 .font(.largeTitle).multilineTextAlignment(.leading).bold()
             
-            Text("00")
+            Text(timeStrings[1])
                 .font(.subheadline)
                 .offset(y: -5)
         }
@@ -24,6 +29,6 @@ struct TimeView: View {
 
 struct TimeView_Previews: PreviewProvider {
     static var previews: some View {
-        TimeView()
+        TimeView(timeElapsed: Date().distance(to: Date()))
     }
 }
