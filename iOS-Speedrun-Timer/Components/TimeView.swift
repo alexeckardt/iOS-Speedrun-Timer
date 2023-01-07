@@ -29,6 +29,6 @@ struct TimeView: View {
 
 struct TimeView_Previews: PreviewProvider {
     static var previews: some View {
-        TimeView(timeElapsed: Date().distance(to: Date()))
+        TimeView(timeElapsed: 3601.4)
     }
 }

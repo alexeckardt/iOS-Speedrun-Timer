@@ -10,7 +10,11 @@ import Foundation
 let secondsAMinute : Double = 60;
 let secondsAnHour : Double = secondsAMinute * secondsAMinute; //minute squared haha
 
-func TimeIntervalToTimerString(secondsElapsed: TimeInterval) -> [String] {
+func TimeIntervalToTimerStringPercision(secondsElapsed: TimeInterval, percision: Int) -> [String] {
+    
+    if (secondsElapsed == 0) {
+        return ["0.", "0"]
+    }
     
     var _secondsElapsed = secondsElapsed;
     var clockString = "";
@@ -20,13 +24,13 @@ func TimeIntervalToTimerString(secondsElapsed: TimeInterval) -> [String] {
     if (_secondsElapsed >= secondsAnHour) {
         
         //Get the Hours that have elapsed
-        let hours : Double = floor(_secondsElapsed/secondsAnHour)
+        let hours : Int = Int(_secondsElapsed/secondsAnHour)
         
         //Add To String
-        clockString += String(format: "%.0f", hours) + ":"
+        clockString += String(format: "%d", hours) + ":"
         
         //Update Seconds
-        _secondsElapsed -= hours * secondsAnHour;
+        _secondsElapsed -= Double(hours) * secondsAnHour;
         hoursPlaced = true;
     }
     
@@ -34,27 +38,38 @@ func TimeIntervalToTimerString(secondsElapsed: TimeInterval) -> [String] {
     if (secondsElapsed >= secondsAMinute || hoursPlaced) {
         
         //Get the Minutes that have elapsed
-        let minutes : Double = floor(_secondsElapsed/secondsAMinute)
+        let minutes : Int = Int(_secondsElapsed/secondsAMinute)
         
         //Add To String
-        clockString += String(format: "%.0f", minutes) + ":"
+        clockString += String(format: "%02d", minutes) + ":"
         
         //Update Seconds
-        _secondsElapsed -= minutes * secondsAMinute;
+        _secondsElapsed -= Double(minutes) * secondsAMinute;
     }
          
     //Should Be Below 60 now; Show Seconds
-    clockString += String(format: "%.0f", floor(_secondsElapsed)) + "."
+    clockString += String(format: "%02d", Int(_secondsElapsed)) + "."
     
     //
     //
     //Round The Time Under A Seconds
-    var frac : Double = secondsElapsed.truncatingRemainder(dividingBy: 1);
-    frac = floor(frac * 1000)
+    let frac : Double = secondsElapsed.truncatingRemainder(dividingBy: 1);
+    let multiplier = pow(10, Double(percision+1))
+    
+    let subSeconds : Int = Int(frac * multiplier)
       
     //
     //
     //
     
-    return [clockString, String(format: "%.0f", frac)]
+    return [clockString, String(format: "%04d", subSeconds)]
+    
+}
+
+//
+//
+//
+
+func TimeIntervalToTimerString(secondsElapsed: TimeInterval) -> [String] {
+    return TimeIntervalToTimerStringPercision(secondsElapsed: secondsElapsed, percision: 3)
 }
