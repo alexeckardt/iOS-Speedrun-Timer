@@ -16,16 +16,19 @@ struct RunPageView: View {
     @State private var isActive = true
     @State private var dateAppClosed : Date = Date();
     
-
     //Timer
     @State private var timerRunning = false;
     @State private var timeLastUpdated : Date = Date();
     @State private var storedTimerTime : TimeInterval = 0.0;
+    @State private var timeLastSplitCreated : TimeInterval = 0;
     @State private var timeStep = 0.01
     let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
     
     //Splits
     @State private var splitsHit = 0;
+    @State private var displaySplits : [SplitDisplayStruct] = []
+    @State private var totalSplitCount = 10; //testrn
+    @State private var lockSplitButton = false;
     
     //Size
     private var buttonSize : CGFloat = 20;
@@ -132,11 +135,12 @@ extension RunPageView {
     var splitInfo : some View {
         
         LazyVStack {
+            
             //Go Over the Tabs
-            ForEach(0 ... splitsHit, id: \.self) { i in
+            ForEach(displaySplits) { splitInfo in
                 
                 //Show the Milestone
-                TimerSplitView()
+                TimerSplitView(splitInfo: splitInfo)
                 
             }
             
@@ -174,16 +178,25 @@ extension RunPageView {
         
         Button() {
             
-            //Cause Split
-            if (timerRunning) {
+            if (!lockSplitButton) {
                 
-                SplitCreate()
+                //Cause Split
+                if (timerRunning) {
+                    
+                    SplitCreate()
+                    
+                    //Start Timer
+                } else {
+                    
+                    TimerStart()
+                    
+                }
                 
-            //Start Timer
             } else {
+
+                //Reset
+                TimerReset();
                 
-                TimerStart()
-            
             }
             
         } label: {
@@ -199,7 +212,7 @@ extension RunPageView {
             //Horizontal Space Full
             HStack { Spacer() }
             
-            let buttonText = (timerRunning) ? "Tap To Split" : "Tap To Start Run"
+            let buttonText = (timerRunning) ? "Tap To Split" : (lockSplitButton) ? "Start New Run" : "Tap To Start Run"
             
             Text(buttonText)
                 .fontWeight(.semibold).padding(.bottom, 5).foregroundColor(.white)
@@ -207,7 +220,7 @@ extension RunPageView {
         }
         .frame(height: 160)
         .padding(.leading)
-        .background(Color(.systemBlue))
+        .background(lockSplitButton ? Color(.systemGray) : (timerRunning) ? Color(.systemBlue) : Color(.systemGreen))
 
     }
     
@@ -256,14 +269,17 @@ extension RunPageView {
             Spacer()
             
             //Reset
+            let resetButtonActive = !lockSplitButton && storedTimerTime > 0
             Button {
                 
-                TimerReset();
+                if (resetButtonActive) {
+                    TimerReset();
+                }
                 
             } label: {
                 RunSmallButtonLabelView(buttonSize: buttonSize,
                                         buttonLabelImage: "trash",
-                                        backgroundCol: Color(.systemRed))
+                                        backgroundCol: (resetButtonActive) ? Color(.systemRed) : g)
             }
             
 
@@ -306,7 +322,7 @@ extension RunPageView {
         storedTimerTime = 0.0;
         
         //Reset Hit Counter
-        splitsHit = 0;
+        SplitsReset()
     }
     
     func TimerUpdate() {
@@ -320,6 +336,7 @@ extension RunPageView {
     }
     
     func TimerUpdateOnSceneUpdate(newPhase: ScenePhase) {
+        
         //App Opens
         if newPhase == .active {
             
@@ -354,10 +371,44 @@ extension RunPageView {
         }
     }
     
+    func TimerStop() {
+        
+        //Stop Running, Nothing Else Happens
+        timerRunning = false;
+        
+        //Lock
+        lockSplitButton = true;
+        
+    }
+    
+    //
+    //
+    //
+    
     func SplitCreate() {
         
-        //Cause Split
-        splitsHit += 1;
+        if (!lockSplitButton) {
+            
+            //Get Time Difference
+            let timeForSplit = storedTimerTime - timeLastSplitCreated;
+            timeLastSplitCreated = storedTimerTime;
+            
+            //Create Split
+            let newSplitInfo = SplitDisplayStruct(splitId: splitsHit, splitName: "1-" + String(splitsHit), timeTook: timeForSplit);
+            splitsHit += 1;
+            
+            //Add To List
+            displaySplits.insert(newSplitInfo, at: 0)
+            
+            print("Split created")
+            
+            //Finish
+            if (splitsHit == totalSplitCount) {
+                
+                TimerStop()
+                
+            }
+        }
         
     }
     
@@ -365,13 +416,28 @@ extension RunPageView {
         
         if (splitsHit > 0) {
             splitsHit -= 1;
+            
+            //Delete
+            displaySplits.remove(at: 0)
+            
+            print("Split Removed")
+            
+            //Unlock If Locked
+            lockSplitButton = false;
         }
-        
     }
     
     func SplitsReset() {
         
+        //Stop
         splitsHit = 0;
+        timeLastSplitCreated = 0;
+        
+        //Reset
+        displaySplits.removeAll()
+        
+        //Unlock
+        lockSplitButton = false;
         
     }
     

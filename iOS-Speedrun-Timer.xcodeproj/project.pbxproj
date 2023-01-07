@@ -25,6 +25,7 @@
 		0870C7872969107B00E95533 /* RunSmallButtonLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C7862969107B00E95533 /* RunSmallButtonLabelView.swift */; };
 		0870C78B2969150C00E95533 /* DisplayFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C78A2969150C00E95533 /* DisplayFunctions.swift */; };
 		0870C78D2969152C00E95533 /* TimerFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C78C2969152C00E95533 /* TimerFunctions.swift */; };
+		0870C79329693A5000E95533 /* SplitDisplayStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C79229693A5000E95533 /* SplitDisplayStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		0870C7862969107B00E95533 /* RunSmallButtonLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSmallButtonLabelView.swift; sourceTree = "<group>"; };
 		0870C78A2969150C00E95533 /* DisplayFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayFunctions.swift; sourceTree = "<group>"; };
 		0870C78C2969152C00E95533 /* TimerFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerFunctions.swift; sourceTree = "<group>"; };
+		0870C79229693A5000E95533 /* SplitDisplayStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitDisplayStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,9 @@
 		0870C76E2968F4EA00E95533 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0870C7942969459E00E95533 /* New Group */,
+				0870C78F29693A3300E95533 /* Data */,
+				0870C78E29693A2F00E95533 /* Views */,
 				0870C76F2968F4F800E95533 /* GameTabView.swift */,
 				0870C7712968F95900E95533 /* CategoryTabView.swift */,
 				0870C7762968FB0B00E95533 /* MilestoneTabView.swift */,
@@ -133,6 +138,28 @@
 				0870C78C2969152C00E95533 /* TimerFunctions.swift */,
 			);
 			path = Functionality;
+			sourceTree = "<group>";
+		};
+		0870C78E29693A2F00E95533 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0870C78F29693A3300E95533 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0870C79229693A5000E95533 /* SplitDisplayStruct.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		0870C7942969459E00E95533 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +237,7 @@
 				0870C6D429678FA000E95533 /* ContentView.swift in Sources */,
 				0870C7742968F9EB00E95533 /* CategoryPageView.swift in Sources */,
 				0870C77F2968FF9A00E95533 /* TimeView.swift in Sources */,
+				0870C79329693A5000E95533 /* SplitDisplayStruct.swift in Sources */,
 				0870C7872969107B00E95533 /* RunSmallButtonLabelView.swift in Sources */,
 				0870C6D229678FA000E95533 /* iOS_Speedrun_TimerApp.swift in Sources */,
 				0870C7832969089C00E95533 /* TimerSplitView.swift in Sources */,

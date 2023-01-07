@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct TimerSplitView: View {
+    
+    let splitInfo : SplitDisplayStruct
+    
     var body: some View {
         //Current Split
         HStack {
             
-            Text("1-1:")
+            Text(splitInfo.splitName)
                 .font(.subheadline)
                 .foregroundColor(Color(.systemGray))
             
-            Text("0:00")
+            Text(TimeIntervalGetFloatingMinuteClockString(secondsElapsed: splitInfo.timeTook))
                 .font(.subheadline).bold()
             
         }
@@ -25,6 +28,6 @@ struct TimerSplitView: View {
 
 struct TimerSplitView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerSplitView()
+        TimerSplitView(splitInfo: SplitDisplayStruct(splitId: 0, splitName: "1-1", timeTook: 12))
     }
 }
