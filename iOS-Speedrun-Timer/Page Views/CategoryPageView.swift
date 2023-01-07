@@ -23,10 +23,10 @@ struct CategoryPageView: View {
                         CategoryTabView(categoryIcon: "timer", categoryName: "Category")
                     }
                     
-                }
-                
+                }  
             }
         }
+        
         //Navigation Header
         .navigationTitle("Categories")
         .navigationBarTitleDisplayMode(.inline)

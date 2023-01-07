@@ -17,6 +17,7 @@
 		0870C7742968F9EB00E95533 /* CategoryPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C7732968F9EB00E95533 /* CategoryPageView.swift */; };
 		0870C7772968FB0B00E95533 /* MilestoneTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C7762968FB0B00E95533 /* MilestoneTabView.swift */; };
 		0870C7792968FC6D00E95533 /* RightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C7782968FC6D00E95533 /* RightArrow.swift */; };
+		0870C77B2968FCC300E95533 /* MilestonePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870C77A2968FCC300E95533 /* MilestonePageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		0870C7732968F9EB00E95533 /* CategoryPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPageView.swift; sourceTree = "<group>"; };
 		0870C7762968FB0B00E95533 /* MilestoneTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneTabView.swift; sourceTree = "<group>"; };
 		0870C7782968FC6D00E95533 /* RightArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightArrow.swift; sourceTree = "<group>"; };
+		0870C77A2968FCC300E95533 /* MilestonePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestonePageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				0870C76C2968F4D900E95533 /* GamePageView.swift */,
 				0870C7732968F9EB00E95533 /* CategoryPageView.swift */,
+				0870C77A2968FCC300E95533 /* MilestonePageView.swift */,
 			);
 			path = "Page Views";
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0870C77B2968FCC300E95533 /* MilestonePageView.swift in Sources */,
 				0870C6D429678FA000E95533 /* ContentView.swift in Sources */,
 				0870C7742968F9EB00E95533 /* CategoryPageView.swift in Sources */,
 				0870C6D229678FA000E95533 /* iOS_Speedrun_TimerApp.swift in Sources */,
